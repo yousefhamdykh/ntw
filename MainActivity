@@ -1,0 +1,31 @@
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText el;
+    TextView tv;
+    //Client c;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        el=(EditText)findViewById(R.id.editTextTextPersonName2);
+        tv=(TextView)findViewById(R.id.textView2);
+
+    }
+
+
+    public void send(View v){
+     Client c = new Client();
+     c.execute(el.getText().toString());
+
+
+
+
+
+
+
+        }
+    }

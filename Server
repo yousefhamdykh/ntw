@@ -1,0 +1,35 @@
+mport java.io.*;
+import java.net.*;
+ 
+public class Server
+{
+    private final static int PORT = 7788;
+ 
+    public static void main(String[] args) throws IOException
+    {
+        ServerSocket serverSocket = new ServerSocket(PORT);
+ 
+        System.out.println("Listening on port " + PORT);
+ 
+        while (true) {
+            try (Socket socket = serverSocket.accept();
+                 InputStreamReader isr = new InputStreamReader(socket.getInputStream());
+                 BufferedReader in = new BufferedReader(isr);
+                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+            ) {
+                System.out.println("Connection accepted");
+ 
+                String line;
+                while ((line = in.readLine()) != null) {
+                	 String sentence= line.toUpperCase();
+                    System.out.println("Server received: " + sentence + ". Sending to client");
+                    out.write(sentence);
+ 
+                    if (line.equals("Bye")) {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}

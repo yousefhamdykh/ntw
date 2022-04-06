@@ -1,0 +1,52 @@
+package com.example.servertest;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.DataOutputStream;
+import java.net.Socket;
+import android.os.AsyncTask;
+import java.io.*;
+        import java.net.*;
+public class Client extends AsyncTask<String,Void,Void> {
+
+  Socket s;
+  DataOutputStream output;
+  DataInputStream input;
+  PrintWriter pw;
+    InputStreamReader isr;
+    BufferedReader in;
+  @Override
+    protected Void doInBackground(String...voids){
+      String message =voids[0];
+      try {
+          s = new Socket("192.168.1.115", 7788);
+          isr = new InputStreamReader(s.getInputStream());
+          in = new BufferedReader(isr);
+          PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+
+
+
+
+
+          }
+      catch(IOException e){
+          e.printStackTrace();
+      }
+
+
+
+
+
+
+
+
+
+
+
+      return null;
+  }
+
+}
